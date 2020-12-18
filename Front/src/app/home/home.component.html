@@ -1,3 +1,5 @@
+<app-navbar></app-navbar>
+
 <div class="wrapper">
   <main>
     <div class="main-section">
@@ -17,23 +19,21 @@
                       </div>
                     </div>
                     <div class="user-specs">
-                      <h3>John Doe</h3>
-                      <span>Graphic Designer at Self Employed</span>
+                      <h3>{{ user.username }}</h3>
+                      <span>{{ user.bio }}</span>
                     </div>
                   </div>
                   <ul class="user-fw-status">
                     <li>
                       <h4>Following</h4>
-                      <span>34</span>
+                      <span>{{ user.kicked.length }}</span>
                     </li>
                     <li>
                       <h4>Followers</h4>
-                      <span>155</span>
+                      <span>{{ user.kickers.length }}</span>
                     </li>
                     <li>
-                      <a
-                        href="https://www.gambolthemes.net/workwise-new/my-profile.html"
-                        title=""
+                      <a href="http://localhost:4200/profile" title=""
                         >View Profile</a
                       >
                     </li>
@@ -351,7 +351,7 @@
                                   3 min ago</span
                                 >
                                 <p>
-                                  {{ infos[0].info }}
+                                  <!-- {{ infos[0].info }} -->
                                 </p>
                                 <a href="#" title=""
                                   ><i class="fa fa-reply-all"></i>Reply</a
