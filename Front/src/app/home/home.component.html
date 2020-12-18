@@ -12,10 +12,7 @@
                   <div class="user-profile">
                     <div class="username-dt">
                       <div class="usr-pic">
-                        <img
-                          src="../../assets/images/resources/user-pic.png"
-                          alt=""
-                        />
+                        <img src="{{ user.picture }}" alt="" />
                       </div>
                     </div>
                     <div class="user-specs">
@@ -114,20 +111,15 @@
                   <div class="post-st">
                     <ul>
                       <li>
-                        <a class="post_project" href="#" title=""
-                          >Post a Project</a
-                        >
-                      </li>
-                      <li>
-                        <a class="post-jb active" href="#" title=""
-                          >Post a Job</a
+                        <a class="post-jb active" href="#" title="">
+                          Write a Post</a
                         >
                       </li>
                     </ul>
                   </div>
                 </div>
                 <div class="posts-section">
-                  <div class="post-bar">
+                  <div *ngFor="let post of posts" class="post-bar">
                     <div class="post_topbar">
                       <div class="usy-dt">
                         <img
@@ -135,7 +127,7 @@
                           alt=""
                         />
                         <div class="usy-name">
-                          <h3>John Doe</h3>
+                          <h3>{{ post.posterId.username }}</h3>
                           <span
                             ><img src="../../assets/images/clock.png" alt="" />3
                             min ago</span
@@ -158,62 +150,7 @@
 
                     <div class="job_descp">
                       <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Aliquam luctus hendrerit metus, ut ullamcorper quam
-                        finibus at. Etiam id magna sit amet...
-                        <a href="#" title="">view more</a>
-                      </p>
-                    </div>
-                    <div class="job-status-bar">
-                      <ul class="like-com">
-                        <li>
-                          <a href="#"><i class="fas fa-heart"></i> Like</a>
-                          <img src="../../assets/images/liked-img.png" alt="" />
-                          <span>25</span>
-                        </li>
-                        <li>
-                          <a href="#" class="com"
-                            ><i class="fas fa-comment-alt"></i> Comment 15</a
-                          >
-                        </li>
-                      </ul>
-                      <a href="#"><i class="fas fa-eye"></i>Views 50</a>
-                    </div>
-                  </div>
-                  <div class="post-bar">
-                    <div class="post_topbar">
-                      <div class="usy-dt">
-                        <img
-                          src="../../assets/images/resources/us-pic.png"
-                          alt=""
-                        />
-                        <div class="usy-name">
-                          <h3>John Doe</h3>
-                          <span
-                            ><img src="../../assets/images/clock.png" alt="" />3
-                            min ago</span
-                          >
-                        </div>
-                      </div>
-                      <div class="ed-opts">
-                        <a href="#" title="" class="ed-opts-open"
-                          ><i class="la la-ellipsis-v"></i
-                        ></a>
-                        <ul class="ed-options">
-                          <li><a href="#" title="">Edit Post</a></li>
-                          <li><a href="#" title="">Unsaved</a></li>
-                          <li><a href="#" title="">Unbid</a></li>
-                          <li><a href="#" title="">Close</a></li>
-                          <li><a href="#" title="">Hide</a></li>
-                        </ul>
-                      </div>
-                    </div>
-
-                    <div class="job_descp">
-                      <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Aliquam luctus hendrerit metus, ut ullamcorper quam
-                        finibus at. Etiam id magna sit amet...
+                        {{ post.message }}<br />
                         <a href="#" title="">view more</a>
                       </p>
                     </div>
@@ -352,9 +289,7 @@
                                   />
                                   3 min ago</span
                                 >
-                                <p>
-                                  {{ infos[0].info }}
-                                </p>
+                                <p></p>
                                 <a href="#" title=""
                                   ><i class="fa fa-reply-all"></i>Reply</a
                                 >
@@ -386,7 +321,7 @@
               <div class="right-sidebar">
                 <div class="widget widget-jobs">
                   <div class="sd-title">
-                    <h3>Most Viewed This Week</h3>
+                    <h3>Trending</h3>
                     <i class="la la-ellipsis-v"></i>
                   </div>
                   <div class="jobs-list">
@@ -491,39 +426,12 @@
   </div>
   <div class="post-popup job_post">
     <div class="post-project">
-      <h3>Post a job</h3>
+      <h3>Write a Post</h3>
       <div class="post-project-fields">
         <form>
           <div class="row">
             <div class="col-lg-12">
               <input type="text" name="title" placeholder="Title" />
-            </div>
-            <div class="col-lg-12">
-              <div class="inp-field">
-                <select>
-                  <option>Category</option>
-                  <option>Category 1</option>
-                  <option>Category 2</option>
-                  <option>Category 3</option>
-                </select>
-              </div>
-            </div>
-            <div class="col-lg-12">
-              <input type="text" name="skills" placeholder="Skills" />
-            </div>
-            <div class="col-lg-6">
-              <div class="price-br">
-                <input type="text" name="price1" placeholder="Price" />
-                <i class="la la-dollar"></i>
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <div class="inp-field">
-                <select>
-                  <option>Full Time</option>
-                  <option>Half time</option>
-                </select>
-              </div>
             </div>
             <div class="col-lg-12">
               <textarea name="description" placeholder="Description"></textarea>
