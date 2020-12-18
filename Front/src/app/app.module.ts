@@ -17,6 +17,7 @@ import { MessagesComponent } from './messages/messages.component';
 import { UserService } from './services/user.service';
 import { ValidateService } from './services/validate.service';
 import { JwtModule } from '@auth0/angular-jwt';
+import { ProfileComponent } from './profile/profile.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,6 +26,7 @@ import { JwtModule } from '@auth0/angular-jwt';
     NavbarComponent,
     FriendsComponent,
     MessagesComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,

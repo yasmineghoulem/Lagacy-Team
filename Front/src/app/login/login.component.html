@@ -74,7 +74,10 @@
               </div>
               <div class="sign_in_sec" id="tab-2">
                 <div class="dff-tab current" id="tab-3">
-                  <form #userRegistrationForm="ngForm" (ngSubmit)="OnSubmit(userRegistrationForm)">
+                  <form
+                    #userRegistrationForm="ngForm"
+                    (ngSubmit)="OnSubmit(userRegistrationForm)"
+                  >
                     <div class="row">
                       <div class="col-lg-12 no-pdd">
                         <div class="sn-field">
@@ -92,28 +95,28 @@
                       <div class="col-lg-12 no-pdd">
                         <div class="sn-field">
                           <input
-                          type="text"
-                          #email="ngModel"
-                          [(ngModel)]="user.email"
-                          name="email"
-                          placeholder="E-mail"
-                          [pattern]="emailPattern"
-                          required
-                        />
+                            type="text"
+                            #email="ngModel"
+                            [(ngModel)]="user.email"
+                            name="email"
+                            placeholder="E-mail"
+                            [pattern]="emailPattern"
+                            required
+                          />
                           <i class="la la-globe"></i>
                         </div>
                       </div>
                       <div class="col-lg-12 no-pdd">
                         <div class="sn-field">
                           <input
-                          type="password"
-                          name="password"
-                          placeholder="Password"
-                          #password="ngModel"
-                          [(ngModel)]="user.password"
-                          validate
-                          required
-                        />
+                            type="password"
+                            name="password"
+                            placeholder="Password"
+                            #password="ngModel"
+                            [(ngModel)]="user.password"
+                            validate
+                            required
+                          />
                           <i class="la la-lock"></i>
                         </div>
                       </div>
@@ -128,7 +131,11 @@
                         </div>
                       </div>
                       <div class="col-lg-12 no-pdd">
-                        <button [disabled]="!userRegistrationForm.valid" type="submit" value="submit">
+                        <button
+                          [disabled]="!userRegistrationForm.valid"
+                          type="submit"
+                          value="submit"
+                        >
                           Register
                         </button>
                       </div>
