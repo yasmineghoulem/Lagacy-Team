@@ -174,7 +174,7 @@
                       </ul>
                     </div>
                   </div>
-                  <!-- Modal -->
+                  <!-- comments Modal -->
                   <div
                     class="modal fade"
                     id="exampleModal"
@@ -186,7 +186,7 @@
                     <div class="modal-dialog" role="document">
                       <div class="modal-content">
                         <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLabel">
+                          <h3 style="color: white;" class="modal-title" id="exampleModalLabel">
                             Comments
                           </h5>
                           <button
@@ -201,7 +201,7 @@
                         <div class="modal-body">
                           <div class="comment-section">
                             <div class="comment-sec">
-                              <ul>
+                              <ul *ngFor="let comment of post.comments" >
                                 <li>
                                   <div class="comment-list">
                                     <div class="bg-img">
@@ -211,7 +211,7 @@
                                       />
                                     </div>
                                     <div class="comment">
-                                      <h3>John Doe</h3>
+                                      <h3>{{comment.username}}</h3>
                                       <span
                                         ><img
                                           src="../../assets/images/clock.png"
@@ -219,7 +219,7 @@
                                         />
                                         3 min ago</span
                                       >
-                                      <p>Lorem ipsum dolor sit amet,</p>
+                                      <p>[{{comment.text}}]</p>
                                     </div>
                                   </div>
                                 </li>
@@ -240,8 +240,9 @@
                                       placeholder="Post a comment"
                                     />
                                   </div>
-                                  <div class="col-"></div>
-                                  <button type="submit">Send</button>
+                                  <div class="col-md-4">
+                                    <button type="submit">Send</button>
+                                  </div>
                                 </form>
                               </div>
                             </div>
