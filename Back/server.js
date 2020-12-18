@@ -9,11 +9,10 @@ const { checkUser, requireAuth } = require("./middleware/auth.middleware");
 require("./config/db");
 
 const app = express();
-const port = 5000
-
+const port = 3001;
 
 const corsOptions = {
-  origin: "http://localhost:3000",
+  origin: "http://localhost:4200",
   credentials: true,
   allowedHeaders: ["sessionId", "Content-Type"],
   exposedMethods: ["sessionId"],
