@@ -9,6 +9,7 @@ export class PostService {
   readonly rootUrl = 'http://localhost:3001/api';
   post: any;
   authToken: any;
+  idpost: any;
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
   };
@@ -34,5 +35,15 @@ export class PostService {
       Authorization: this.authToken,
     });
     return this.http.post(this.rootUrl + '/post', post, { headers: headers });
+  }
+  editPost(post: any) {
+    var requestHeader = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+    };
+    return this.http.put(
+      this.rootUrl + `/post/${post.posterId}`,
+      post,
+      requestHeader
+    );
   }
 }
