@@ -82,6 +82,12 @@ export class HomeComponent implements OnInit {
     obj.likers?.push(this.user._id);
     console.log(obj);
     this.postService.editPost(obj);
+    this.postService.getAllPosts().subscribe((data) => {
+      this.posts = data;
+
+      this.isOpen = Array(this.posts.length).fill(false);
+      console.log('hello i m home', this.posts);
+    });
   }
   onPictureSelected(event: any) {
     return (this.picture = <File>event.target.files[0]);
