@@ -5,6 +5,7 @@ import { PostService } from '../services/post.service';
 import { ToastrService } from 'ngx-toastr';
 import { Post } from '../models/post.model';
 import { Router } from '@angular/router';
+import { ConditionalExpr } from '@angular/compiler';
 
 @Component({
   selector: 'app-home',
@@ -17,7 +18,7 @@ export class HomeComponent implements OnInit {
   isOpen: any;
   post: Post;
   picture: any | undefined;
-
+  idpost: any | undefined;
   constructor(
     private data: DataService,
     private postService: PostService,
@@ -80,6 +81,16 @@ export class HomeComponent implements OnInit {
       likers: ['string'],
       comments: [{}],
     };
+  }
+  clicklike(post: Post) {
+    let obj = { id: this.user._id };
+    console.log(obj);
+    this.postService.editPost(post, obj);
+    this.postService.getAllPosts().subscribe((data) => {
+      this.posts = data;
+      this.isOpen = Array(this.posts.length).fill(false);
+      // console.log('hello i m home', this.posts);
+    });
   }
 
   onPictureSelected(event: any) {

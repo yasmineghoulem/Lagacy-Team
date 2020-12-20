@@ -132,9 +132,10 @@
                     </div>
                     <div class="job-status-bar">
                       <ul class="like-com">
-                        <li>
+                        <li (click)="clicklike(post)">
                           <a href="#"><i class="fas fa-heart"></i> Like</a>
                           <img src="../../assets/images/liked-img.png" alt="" />
+
                           <span>{{ post.likers.length }}</span>
                         </li>
                         <li>
@@ -303,7 +304,7 @@
         <form #postForm="ngForm" (ngSubmit)="OnSubmitPost(postForm)">
           <div class="row">
             <div class="col-lg-12">
-              <input
+                <input
                 class="form-control"
                 #picture="ngModel"
                 [(ngModel)]="post.picture"
