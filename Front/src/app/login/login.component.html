@@ -22,14 +22,21 @@
               </ul>
               <div class="sign_in_sec current" id="tab-1">
                 <h3>Sign in</h3>
-                <form>
+                <form
+                  #userLoginForm="ngForm"
+                  (ngSubmit)="OnSubmitLogin(email.value, password.value)"
+                >
                   <div class="row">
                     <div class="col-lg-12 no-pdd">
                       <div class="sn-field">
                         <input
                           type="text"
-                          name="username"
-                          placeholder="Username"
+                          #email="ngModel"
+                          ngModel
+                          name="email"
+                          placeholder="E-mail"
+                          [pattern]="emailPattern"
+                          required
                         />
                         <i class="la la-user"></i>
                       </div>
@@ -40,38 +47,47 @@
                           type="password"
                           name="password"
                           placeholder="Password"
+                          #password="ngModel"
+                          ngModel
+                          validate
+                          required
                         />
                         <i class="la la-lock"></i>
                       </div>
                     </div>
                     <div class="col-lg-12 no-pdd">
                       <div class="checky-sec">
-                        <div class="fgt-sec">
-                          <input type="checkbox" name="cc" id="c1" />
-                          <label for="c1">
-                            <span></span>
-                          </label>
-                          <small>Remember me</small>
-                        </div>
                         <a href="#" title="">Forgot Password?</a>
                       </div>
                     </div>
                     <div class="col-lg-12 no-pdd">
-                      <button type="submit" value="submit">Sign in</button>
+                      <button
+                        [disabled]="!userLoginForm.valid"
+                        type="submit"
+                        value="submit"
+                      >
+                        Sign in
+                      </button>
                     </div>
                   </div>
                 </form>
               </div>
               <div class="sign_in_sec" id="tab-2">
                 <div class="dff-tab current" id="tab-3">
-                  <form>
+                  <form
+                    #userRegistrationForm="ngForm"
+                    (ngSubmit)="OnSubmit(userRegistrationForm)"
+                  >
                     <div class="row">
                       <div class="col-lg-12 no-pdd">
                         <div class="sn-field">
                           <input
+                            #username="ngModel"
+                            [(ngModel)]="user.username"
                             type="text"
-                            name="name"
-                            placeholder="Full Name"
+                            name="username"
+                            placeholder="Username"
+                            required
                           />
                           <i class="la la-user"></i>
                         </div>
@@ -80,23 +96,14 @@
                         <div class="sn-field">
                           <input
                             type="text"
-                            name="country"
-                            placeholder="Country"
+                            #email="ngModel"
+                            [(ngModel)]="user.email"
+                            name="email"
+                            placeholder="E-mail"
+                            [pattern]="emailPattern"
+                            required
                           />
                           <i class="la la-globe"></i>
-                        </div>
-                      </div>
-                      <div class="col-lg-12 no-pdd">
-                        <div class="sn-field">
-                          <select>
-                            <option>Category</option>
-                            <option>Category 1</option>
-                            <option>Category 2</option>
-                            <option>Category 3</option>
-                            <option>Category 4</option>
-                          </select>
-                          <i class="la la-dropbox"></i>
-                          <span><i class="fa fa-ellipsis-h"></i></span>
                         </div>
                       </div>
                       <div class="col-lg-12 no-pdd">
@@ -105,6 +112,10 @@
                             type="password"
                             name="password"
                             placeholder="Password"
+                            #password="ngModel"
+                            [(ngModel)]="user.password"
+                            validate
+                            required
                           />
                           <i class="la la-lock"></i>
                         </div>
@@ -120,22 +131,12 @@
                         </div>
                       </div>
                       <div class="col-lg-12 no-pdd">
-                        <div class="checky-sec st2">
-                          <div class="fgt-sec">
-                            <input type="checkbox" name="cc" id="c2" />
-                            <label for="c2">
-                              <span></span>
-                            </label>
-                            <small
-                              >Yes, I understand and agree to the workwise Terms
-                              & Conditions.</small
-                            >
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-lg-12 no-pdd">
-                        <button type="submit" value="submit">
-                          Get Started
+                        <button
+                          [disabled]="!userRegistrationForm.valid"
+                          type="submit"
+                          value="submit"
+                        >
+                          Register
                         </button>
                       </div>
                     </div>

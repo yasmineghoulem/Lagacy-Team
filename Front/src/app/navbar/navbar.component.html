@@ -10,7 +10,7 @@
       <nav>
         <ul>
           <li>
-            <a routerLink="/home">
+            <a routerLink="/">
               <span><img src="../../assets/images/icon1.png" alt="" /></span>
               Home
             </a>
@@ -117,7 +117,7 @@
           <i class="la la-sort-down"></i>
         </div>
         <div class="user-account-settingss" id="users">
-          <h3 class="tc"><a href="sign-in.html" title="">Logout</a></h3>
+          <h3 class="tc"><a (click)="Logout()" routerLink="/">Logout</a></h3>
         </div>
       </div>
     </div>

@@ -1,3 +1,5 @@
+<app-navbar></app-navbar>
+
 <div class="wrapper">
   <main>
     <div class="main-section">
@@ -10,32 +12,25 @@
                   <div class="user-profile">
                     <div class="username-dt">
                       <div class="usr-pic">
-                        <img
-                          src="../../assets/images/resources/user-pic.png"
-                          alt=""
-                        />
+                        <img src="{{ user.picture }}" alt="" />
                       </div>
                     </div>
                     <div class="user-specs">
-                      <h3>John Doe</h3>
-                      <span>Graphic Designer at Self Employed</span>
+                      <h3>{{ user.username }}</h3>
+                      <span>{{ user.bio }}</span>
                     </div>
                   </div>
                   <ul class="user-fw-status">
                     <li>
                       <h4>Following</h4>
-                      <span>34</span>
+                      <span>{{ user.kicked.length }}</span>
                     </li>
                     <li>
                       <h4>Followers</h4>
-                      <span>155</span>
+                      <span>{{ user.kickers.length }}</span>
                     </li>
                     <li>
-                      <a
-                        href="https://www.gambolthemes.net/workwise-new/my-profile.html"
-                        title=""
-                        >View Profile</a
-                      >
+                      <a routerLink="/profile" title="">View Profile</a>
                     </li>
                   </ul>
                 </div>
@@ -112,20 +107,19 @@
                   <div class="post-st">
                     <ul>
                       <li>
-                        <a class="post_project" href="#" title=""
-                          >Post a Project</a
-                        >
-                      </li>
-                      <li>
-                        <a class="post-jb active" href="#" title=""
-                          >Post a Job</a
+                        <a class="post-jb active" href="#" title="">
+                          Write a Post</a
                         >
                       </li>
                     </ul>
                   </div>
                 </div>
                 <div class="posts-section">
-                  <div class="post-bar">
+                  <div
+                    *ngFor="let post of posts; let i = index"
+                    [attr.data-index]="i"
+                    class="post-bar"
+                  >
                     <div class="post_topbar">
                       <div class="usy-dt">
                         <img
@@ -133,7 +127,8 @@
                           alt=""
                         />
                         <div class="usy-name">
-                          <h3>John Doe</h3>
+                          <h1 *ngIf="post.comments.length > 0"></h1>
+                          <h3>{{ i }} {{ post.posterId.username }}</h3>
                           <span
                             ><img src="../../assets/images/clock.png" alt="" />3
                             min ago</span
@@ -156,226 +151,66 @@
 
                     <div class="job_descp">
                       <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Aliquam luctus hendrerit metus, ut ullamcorper quam
-                        finibus at. Etiam id magna sit amet...
+                        {{ post.message }}<br />
                         <a href="#" title="">view more</a>
                       </p>
                     </div>
                     <div class="job-status-bar">
                       <ul class="like-com">
-                        <li>
+                        <li (click)="clicklike(post)">
                           <a href="#"><i class="fas fa-heart"></i> Like</a>
                           <img src="../../assets/images/liked-img.png" alt="" />
-                          <span>25</span>
-                        </li>
-                        <li>
-                          <a href="#" class="com"
-                            ><i class="fas fa-comment-alt"></i> Comment 15</a
-                          >
-                        </li>
-                      </ul>
-                      <a href="#"><i class="fas fa-eye"></i>Views 50</a>
-                    </div>
-                  </div>
-                  <div class="post-bar">
-                    <div class="post_topbar">
-                      <div class="usy-dt">
-                        <img
-                          src="../../assets/images/resources/us-pic.png"
-                          alt=""
-                        />
-                        <div class="usy-name">
-                          <h3>John Doe</h3>
-                          <span
-                            ><img src="../../assets/images/clock.png" alt="" />3
-                            min ago</span
-                          >
-                        </div>
-                      </div>
-                      <div class="ed-opts">
-                        <a href="#" title="" class="ed-opts-open"
-                          ><i class="la la-ellipsis-v"></i
-                        ></a>
-                        <ul class="ed-options">
-                          <li><a href="#" title="">Edit Post</a></li>
-                          <li><a href="#" title="">Unsaved</a></li>
-                          <li><a href="#" title="">Unbid</a></li>
-                          <li><a href="#" title="">Close</a></li>
-                          <li><a href="#" title="">Hide</a></li>
-                        </ul>
-                      </div>
-                    </div>
 
-                    <div class="job_descp">
-                      <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Aliquam luctus hendrerit metus, ut ullamcorper quam
-                        finibus at. Etiam id magna sit amet...
-                        <a href="#" title="">view more</a>
-                      </p>
-                    </div>
-                    <div class="job-status-bar">
-                      <ul class="like-com">
-                        <li>
-                          <a href="#"><i class="fas fa-heart"></i> Like</a>
-                          <img src="../../assets/images/liked-img.png" alt="" />
-                          <span>25</span>
+                          <span>{{ post.likers.length }}</span>
                         </li>
                         <li>
-                          <a href="#" class="com"
-                            ><i class="fas fa-comment-alt"></i> Comment 15</a
+                          <a
+                            (click)="openCommentText(i)"
+                            data-toggle="modal"
+                            data-target="#exampleModal"
+                            href="#"
+                            class="com"
+                            ><i class="fas fa-comment-alt"></i>
+                            {{ post.comments.length }}</a
                           >
                         </li>
                       </ul>
-                      <a href="#"><i class="fas fa-eye"></i>Views 50</a>
-                    </div>
-                  </div>
-                  <div class="posty">
-                    <div class="post-bar no-margin">
-                      <div class="post_topbar">
-                        <div class="usy-dt">
-                          <img
-                            src="../../assets/images/resources/us-pc2.png"
-                            alt=""
-                          />
-                          <div class="usy-name">
-                            <h3>John Doe</h3>
-                            <span
-                              ><img
-                                src="../../assets/images/clock.png"
-                                alt=""
-                              />3 min ago</span
-                            >
+                      <div *ngIf="isOpen[i]" class="comment-section">
+                        <div class="comment-sec">
+                          <ul>
+                            <li>
+                              <div
+                                class="comment-list"
+                                *ngFor="let comment of post.comments"
+                              >
+                                <div class="comment">
+                                  <h3>{{ comment.commenterUsername }}</h3>
+                                  <span
+                                    ><img src="images/clock.png" alt="" />
+                                    {{ comment.timestamp | date }}</span
+                                  >
+                                  <p>
+                                    {{ comment.text }}
+                                  </p>
+                                </div>
+                              </div>
+                            </li>
+                          </ul>
+                        </div>
+                        <div class="post-comment">
+                          <div class="cm_img">
+                            <img src="images/resources/bg-img4.png" alt="" />
+                          </div>
+                          <div class="comment_box">
+                            <form>
+                              <input type="text" placeholder="Post a comment" />
+                              <button type="submit">Send</button>
+                            </form>
                           </div>
                         </div>
                       </div>
-                      <div class="job_descp">
-                        <p>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit. Aliquam luctus hendrerit metus, ut ullamcorper
-                          quam finibus at. Etiam id magna sit amet...
-                          <a href="#" title="">view more</a>
-                        </p>
-                      </div>
-                      <div class="job-status-bar">
-                        <ul class="like-com">
-                          <li>
-                            <a href="#"><i class="fas fa-heart"></i> Like</a>
-                            <img
-                              src="../../assets/images/liked-img.png"
-                              alt=""
-                            />
-                            <span>25</span>
-                          </li>
-                          <li>
-                            <a href="#" class="com"
-                              ><i class="fas fa-comment-alt"></i> Comment 15</a
-                            >
-                          </li>
-                        </ul>
-                        <a href="#"><i class="fas fa-eye"></i>Views 50</a>
-                      </div>
                     </div>
-                    <div class="comment-section">
-                      <a href="#" class="plus-ic">
-                        <i class="la la-plus"></i>
-                      </a>
-                      <div class="comment-sec">
-                        <ul>
-                          <li>
-                            <div class="comment-list">
-                              <div class="bg-img">
-                                <img
-                                  src="../../assets/images/resources/bg-img1.png"
-                                  alt=""
-                                />
-                              </div>
-                              <div class="comment">
-                                <h3>John Doe</h3>
-                                <span
-                                  ><img
-                                    src="../../assets/images/clock.png"
-                                    alt=""
-                                  />
-                                  3 min ago</span
-                                >
-                                <p>Lorem ipsum dolor sit amet,</p>
-                                <a href="#" title="" class="active"
-                                  ><i class="fa fa-reply-all"></i>Reply</a
-                                >
-                              </div>
-                            </div>
-                            <ul>
-                              <li>
-                                <div class="comment-list">
-                                  <div class="bg-img">
-                                    <img
-                                      src="../../assets/images/resources/bg-img2.png"
-                                      alt=""
-                                    />
-                                  </div>
-                                  <div class="comment">
-                                    <h3>John Doe</h3>
-                                    <span
-                                      ><img
-                                        src="../../assets/images/clock.png"
-                                        alt=""
-                                      />
-                                      3 min ago</span
-                                    >
-                                    <p>Hi John</p>
-                                    <a href="#" title=""
-                                      ><i class="fa fa-reply-all"></i>Reply</a
-                                    >
-                                  </div>
-                                </div>
-                              </li>
-                            </ul>
-                          </li>
-                          <li>
-                            <div class="comment-list">
-                              <div class="bg-img">
-                                <img
-                                  src="../../assets/images/resources/bg-img3.png"
-                                  alt=""
-                                />
-                              </div>
-                              <div class="comment">
-                                <h3>John Doe</h3>
-                                <span
-                                  ><img
-                                    src="../../assets/images/clock.png"
-                                    alt=""
-                                  />
-                                  3 min ago</span
-                                >
-                                <p>
-                                  {{ infos[0].info }}
-                                </p>
-                                <a href="#" title=""
-                                  ><i class="fa fa-reply-all"></i>Reply</a
-                                >
-                              </div>
-                            </div>
-                          </li>
-                        </ul>
-                      </div>
-                      <div class="post-comment">
-                        <div class="cm_img">
-                          <img
-                            src="../../assets/images/resources/bg-img4.png"
-                            alt=""
-                          />
-                        </div>
-                        <div class="comment_box">
-                          <form>
-                            <input type="text" placeholder="Post a comment" />
-                            <button type="submit">Send</button>
-                          </form>
-                        </div>
-                      </div>
-                    </div>
+                    <!-- Button trigger modal -->
                   </div>
                 </div>
               </div>
@@ -384,7 +219,7 @@
               <div class="right-sidebar">
                 <div class="widget widget-jobs">
                   <div class="sd-title">
-                    <h3>Most Viewed This Week</h3>
+                    <h3>Trending</h3>
                     <i class="la la-ellipsis-v"></i>
                   </div>
                   <div class="jobs-list">
@@ -489,47 +324,37 @@
   </div>
   <div class="post-popup job_post">
     <div class="post-project">
-      <h3>Post a job</h3>
+      <h3>Write a Post</h3>
       <div class="post-project-fields">
-        <form>
+        <form #postForm="ngForm" (ngSubmit)="OnSubmitPost(postForm)">
           <div class="row">
             <div class="col-lg-12">
-              <input type="text" name="title" placeholder="Title" />
+              <!-- <input
+                class="form-control"
+                (change)="onPictureSelected($event)"
+                #picture="ngModel"
+                [(ngModel)]="post.picture"
+                name="picture"
+                type="file"
+              /> -->
             </div>
-            <div class="col-lg-12">
-              <div class="inp-field">
-                <select>
-                  <option>Category</option>
-                  <option>Category 1</option>
-                  <option>Category 2</option>
-                  <option>Category 3</option>
-                </select>
-              </div>
-            </div>
-            <div class="col-lg-12">
-              <input type="text" name="skills" placeholder="Skills" />
-            </div>
-            <div class="col-lg-6">
-              <div class="price-br">
-                <input type="text" name="price1" placeholder="Price" />
-                <i class="la la-dollar"></i>
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <div class="inp-field">
-                <select>
-                  <option>Full Time</option>
-                  <option>Half time</option>
-                </select>
-              </div>
-            </div>
-            <div class="col-lg-12">
-              <textarea name="description" placeholder="Description"></textarea>
-            </div>
+            <!-- <div class="col-lg-12">
+              <textarea
+                #message="ngModel"
+                [(ngModel)]="post.message"
+                name="message"
+                placeholder="Message"
+              ></textarea>
+            </div> -->
             <div class="col-lg-12">
               <ul>
                 <li>
-                  <button class="active" type="submit" value="post">
+                  <button
+                    [disabled]="!postForm.valid"
+                    class="active"
+                    type="submit"
+                    value="post"
+                  >
                     Post
                   </button>
                 </li>
