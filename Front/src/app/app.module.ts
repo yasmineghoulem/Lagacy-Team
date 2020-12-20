@@ -19,6 +19,7 @@ import { ValidateService } from './services/validate.service';
 import { JwtModule } from '@auth0/angular-jwt';
 import { ProfileComponent } from './profile/profile.component';
 import { SettingComponent } from './setting/setting.component';
+import { DisplayMessageComponent } from './display-message/display-message.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { SettingComponent } from './setting/setting.component';
     MessagesComponent,
     ProfileComponent,
     SettingComponent,
+    DisplayMessageComponent,
 
   ],
   imports: [

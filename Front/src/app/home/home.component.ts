@@ -35,8 +35,8 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.resetForm();
     this.loadPosts();
-    // this.data.currentuser.subscribe((user) => (this.user = user));
     this.newuser();
+    this.newkickers();
   }
 
   loadPosts() {
@@ -49,9 +49,11 @@ export class HomeComponent implements OnInit {
   }
 
   newuser() {
+    this.data.changeuser(this.user);
+  }
+  newkickers() {
     this.data.changekickers(this.user.kickers);
   }
-
   OnSubmitPost(form: NgForm) {
     const myForm = new FormData();
     myForm.append('posterId', this.user._id);

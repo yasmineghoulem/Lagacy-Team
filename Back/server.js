@@ -4,7 +4,7 @@ require("dotenv").config({ path: "./config/.env" });
 const userRoutes = require("./routes/user.routes");
 const postRoutes = require("./routes/post.routes");
 const cors = require("cors");
-
+var io = require("socket.io")(http)
 
 // const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
@@ -33,6 +33,10 @@ app.get("/jwtid", requireAuth, (req, res) => {
 app.use("/api/user", userRoutes);
 app.use("/api/post", postRoutes);
 
+
+io.on("connection", (socket) => {
+  console.log('User connected', socket)
+})
 // connect the server
 app.listen(port, () => {
   console.log(`server running on port ${port}`);
