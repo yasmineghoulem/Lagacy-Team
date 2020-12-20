@@ -76,7 +76,7 @@ export class HomeComponent implements OnInit {
     };
   }
 
-  onPictureSelected(event) {
+  onPictureSelected(event: any) {
     return (this.picture = <File>event.target.files[0]);
   }
 }

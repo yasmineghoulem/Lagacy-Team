@@ -6,6 +6,7 @@ import { FriendsComponent } from './friends/friends.component';
 import { MessagesComponent } from './messages/messages.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AuthGuard } from './auth.guard';
+import { SettingComponent } from './setting/setting.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/', pathMatch: 'full' },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'friends', component: FriendsComponent },
   { path: 'messages', component: MessagesComponent },
   { path: 'profile', component: ProfileComponent },
+  { path: 'setting', component: SettingComponent },
 ];
 
 @NgModule({

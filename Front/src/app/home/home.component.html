@@ -325,18 +325,35 @@
     <div class="post-project">
       <h3>Write a Post</h3>
       <div class="post-project-fields">
-        <form  #postForm="ngForm" (ngSubmit)= "OnSubmitPost(postForm)">
+        <form #postForm="ngForm" (ngSubmit)="OnSubmitPost(postForm)">
           <div class="row">
             <div class="col-lg-12">
-              <input class="form-control" (change)="onPictureSelected($event)" #picture="ngModel" [(ngModel)]="post.picture" name="picture" type="file" />
+              <!-- <input
+                class="form-control"
+                (change)="onPictureSelected($event)"
+                #picture="ngModel"
+                [(ngModel)]="post.picture"
+                name="picture"
+                type="file"
+              /> -->
             </div>
-            <div class="col-lg-12">
-              <textarea #message="ngModel" [(ngModel)]="post.message" name="message" placeholder="Message"></textarea>
-            </div>
+            <!-- <div class="col-lg-12">
+              <textarea
+                #message="ngModel"
+                [(ngModel)]="post.message"
+                name="message"
+                placeholder="Message"
+              ></textarea>
+            </div> -->
             <div class="col-lg-12">
               <ul>
                 <li>
-                  <button [disabled]="!postForm.valid" class="active" type="submit" value="post">
+                  <button
+                    [disabled]="!postForm.valid"
+                    class="active"
+                    type="submit"
+                    value="post"
+                  >
                     Post
                   </button>
                 </li>
