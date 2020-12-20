@@ -29,10 +29,13 @@ export class PostService {
     this.authToken = token;
   }
 
-  addPost(post: FormData) {
+  addPost(post: any) {
     let headers = new HttpHeaders({
       Authorization: this.authToken,
     });
-    return this.http.post(this.rootUrl + '/post', post, { headers: headers });
+    console.log('authtoken:', this.authToken);
+    return this.http.post(this.rootUrl + '/post/create', post, {
+      headers: headers,
+    });
   }
 }
