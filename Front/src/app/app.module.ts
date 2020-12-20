@@ -18,6 +18,8 @@ import { UserService } from './services/user.service';
 import { ValidateService } from './services/validate.service';
 import { JwtModule } from '@auth0/angular-jwt';
 import { ProfileComponent } from './profile/profile.component';
+import { SettingComponent } from './setting/setting.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +28,9 @@ import { ProfileComponent } from './profile/profile.component';
     NavbarComponent,
     FriendsComponent,
     MessagesComponent,
-    ProfileComponent
+    ProfileComponent,
+    SettingComponent,
+
   ],
   imports: [
     BrowserModule,
