@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.resetForm();
-    console.log('hello i m home', this.user);
+    // console.log('hello i m home', this.user);
     this.postService.getAllPosts().subscribe((data) => {
       this.posts = data;
 
@@ -77,16 +77,13 @@ export class HomeComponent implements OnInit {
     };
   }
   clicklike(post: Post) {
-    console.log(post);
-    var obj = post;
-    obj.likers?.push(this.user._id);
+    let obj = { id: this.user._id };
     console.log(obj);
-    this.postService.editPost(obj);
+    this.postService.editPost(post, obj);
     this.postService.getAllPosts().subscribe((data) => {
       this.posts = data;
-
       this.isOpen = Array(this.posts.length).fill(false);
-      console.log('hello i m home', this.posts);
+      // console.log('hello i m home', this.posts);
     });
   }
   onPictureSelected(event: any) {

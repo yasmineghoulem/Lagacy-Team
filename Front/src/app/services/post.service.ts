@@ -36,13 +36,13 @@ export class PostService {
     });
     return this.http.post(this.rootUrl + '/post', post, { headers: headers });
   }
-  editPost(post: any) {
+  editPost(post: any, obj: any) {
     var requestHeader = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
     };
-    return this.http.put(
-      this.rootUrl + `/post/${post.posterId}`,
-      post,
+    return this.http.patch(
+      this.rootUrl + `/like-post/${post._id}`,
+      obj,
       requestHeader
     );
   }
