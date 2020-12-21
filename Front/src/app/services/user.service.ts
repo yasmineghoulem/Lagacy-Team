@@ -84,4 +84,14 @@ export class UserService {
     let token = localStorage.getItem('id_token') || undefined;
     return !helper.isTokenExpired(token);
   }
+
+  updateUserPicture (form:any) {
+    let headers = new HttpHeaders({
+      Authorization: this.authToken,
+    });
+
+    return this.http.put(this.rootUrl + '/user/profile-picture', form, {
+      headers: headers,
+    });
+  }
 }
