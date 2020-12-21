@@ -75,7 +75,7 @@ export class LoginComponent implements OnInit {
       username: '',
       password: '',
       friends: [''],
-      kicked: [''],
+      invitations: [''],
       bio: '',
       stars: [''],
     };
