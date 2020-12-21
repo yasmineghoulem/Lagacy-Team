@@ -7,13 +7,13 @@ import { DataService } from '../services/data.service';
 })
 export class FriendsComponent implements OnInit {
   user: {} | undefined;
-  kickers: any | undefined;
+  friends: any | undefined;
   constructor(private data: DataService) {}
 
   ngOnInit(): void {
-    this.data.currentkickers.subscribe((kickers) => {
-      this.kickers = kickers;
+    this.data.currentfriends.subscribe((friends) => {
+      this.friends = friends;
     });
-    console.log(Array.isArray(this.kickers));
+    console.log(Array.isArray(this.friends));
   }
 }
