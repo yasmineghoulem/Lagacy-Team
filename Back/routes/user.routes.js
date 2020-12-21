@@ -16,7 +16,7 @@ router.get("/:id", userController.userInfo);
 router.put("/:id", userController.updateUser);
 router.delete("/:id", userController.deleteUser);
 router.patch("/kicker/:id", userController.kicker);
-router.patch("/deskicked/:id", userController.deskicked);
+router.patch("/desinvitations/:id", userController.desinvitations);
 
 // upload
 router.post("/upload", upload.single("file"), uploadController.uploadProfil);

@@ -43,7 +43,7 @@ const userSchema = new mongoose.Schema(
         }
       ]
     },
-    kicked: {
+    invitations: {
       type: [
         {
           type: mongoose.Schema.Types.ObjectId,
@@ -75,7 +75,7 @@ userSchema.pre("save", async function (next) {
 userSchema.statics.login = async function (email, password) {
   const user = await this.findOne({ email })
     .populate("friends")
-    .populate("kicked");
+    .populate("invitations");
   if (user) {
     const auth = await bcrypt.compare(password, user.password);
     if (auth) {
