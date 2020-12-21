@@ -27,11 +27,19 @@ const userSchema = new mongoose.Schema(
       max: 1030,
       minLength: 6
     },
-    kickers: {
+    friends: {
       type: [
         {
           type: mongoose.Schema.Types.ObjectId,
           ref: "user"
+        }
+      ]
+    },
+    rooms: {
+      type: [
+        {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "room"
         }
       ]
     },
@@ -66,7 +74,7 @@ userSchema.pre("save", async function (next) {
 });
 userSchema.statics.login = async function (email, password) {
   const user = await this.findOne({ email })
-    .populate("kickers")
+    .populate("friends")
     .populate("kicked");
   if (user) {
     const auth = await bcrypt.compare(password, user.password);
