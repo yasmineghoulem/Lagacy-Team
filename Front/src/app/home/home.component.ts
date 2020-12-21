@@ -96,6 +96,7 @@ export class HomeComponent implements OnInit {
   onPictureSelected(event: any) {
     return (this.picture = <File>event.target.files[0]);
   }
+
   linkImg(fileName: string) {
     // base_URL returns localhost:3000 or the production URL
     return `http://localhost:3001/${fileName}`;
