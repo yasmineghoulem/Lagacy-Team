@@ -19,4 +19,6 @@ export class DataService {
   changekickers(kickers: any) {
     this.kickersSource.next(kickers);
   }
+
+  
 }
