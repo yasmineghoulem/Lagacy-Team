@@ -37,7 +37,7 @@ export class UserService {
       email: user.email,
       password: user.password,
       friends: user.friends,
-      kicked: user.kicked,
+      invitations: user.invitations,
       bio: user.bio,
       stars: user.stars,
     };
