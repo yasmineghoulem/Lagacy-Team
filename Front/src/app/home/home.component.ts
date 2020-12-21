@@ -54,7 +54,6 @@ export class HomeComponent implements OnInit {
   loadPosts() {
     this.postService.getAllPosts().subscribe((data) => {
       this.posts = data;
-
       this.isOpen = Array(this.posts.length).fill(false);
       console.log('hello i m home', this.posts);
     });
@@ -126,6 +125,7 @@ export class HomeComponent implements OnInit {
         }
       });
   }
+
   resetForm(form?: NgForm) {
     if (form != null) form.reset();
     this.post = {
@@ -151,8 +151,18 @@ export class HomeComponent implements OnInit {
   onPictureSelected(event: any) {
     return (this.picture = <File>event.target.files[0]);
   }
+
   linkImg(fileName: string) {
     // base_URL returns localhost:3000 or the production URL
     return `http://localhost:3001/${fileName}`;
+  }
+  //methode delete
+  deleteComment(postId: any, commentId: any) {
+    this.commentService.deleteComment(postId, commentId).subscribe(() => {
+      console.log('deleting');
+      // this.post.comments = this.post.comments.filter(comment => {
+      //   return comment._id != commentId
+      // })
+    });
   }
 }

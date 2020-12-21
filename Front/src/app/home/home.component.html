@@ -167,6 +167,14 @@
                                   <p>
                                     {{ comment.text }}
                                   </p>
+                                  <button
+                                    *ngIf="user._id === comment.commenterId"
+                                    (click)="
+                                      deleteComment(post._id, comment._id)
+                                    "
+                                  >
+                                    Delete
+                                  </button>
                                 </div>
                               </div>
                             </li>
