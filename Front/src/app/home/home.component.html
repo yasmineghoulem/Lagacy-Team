@@ -117,8 +117,8 @@
                           ><i class="la la-ellipsis-v"></i
                         ></a>
                         <ul class="ed-options">
-                          <li><a href="#" title="">Edit Post</a></li>
-                          <li><a href="#" title="">Delete</a></li>
+                          <li><a href="" title="">Edit Post</a></li>
+                          <li><a href="" title="">Delete</a></li>
                         </ul>
                       </div>
                     </div>
@@ -174,12 +174,32 @@
                         </div>
                         <div class="post-comment">
                           <div class="cm_img">
-                            <img src="images/resources/bg-img4.png" alt="" />
+                            <img
+                              src="../../assets/images/resources/bg-img4.png"
+                              alt=""
+                            />
                           </div>
                           <div class="comment_box">
-                            <form>
-                              <input type="text" placeholder="Post a comment" />
-                              <button type="submit">Send</button>
+                            <form
+                              #commentForm="ngForm"
+                              (ngSubmit)="
+                                OnSubmitcomment(commentForm, post._id)
+                              "
+                            >
+                              <input
+                                #message="ngModel"
+                                [(ngModel)]="comment.text"
+                                style="width: 332px"
+                                type="text"
+                                name="text"
+                                placeholder="Post a comment"
+                              />
+                              <button
+                                type="submit"
+                                [disabled]="!commentForm.valid"
+                              >
+                                Send
+                              </button>
                             </form>
                           </div>
                         </div>
