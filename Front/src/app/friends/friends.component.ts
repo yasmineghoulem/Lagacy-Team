@@ -6,14 +6,12 @@ import { DataService } from '../services/data.service';
   styleUrls: ['./friends.component.scss'],
 })
 export class FriendsComponent implements OnInit {
-  user: {} | undefined;
-  friends: any | undefined;
+  user = JSON.parse(localStorage.getItem('user') || '{}');
+  friends = this.user.friends;
+  invitations = this.user.invitations;
   constructor(private data: DataService) {}
 
   ngOnInit(): void {
-    this.data.currentfriends.subscribe((friends) => {
-      this.friends = friends;
-    });
-    console.log(Array.isArray(this.friends));
+    console.log(this.invitations);
   }
 }

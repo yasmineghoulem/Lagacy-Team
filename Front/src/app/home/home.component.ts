@@ -48,6 +48,7 @@ export class HomeComponent implements OnInit {
     this.suggestions((data: any) => {
       this.friendsOfFriends.push(data);
     });
+
     console.log('test', this.friendsOfFriends);
   }
 
