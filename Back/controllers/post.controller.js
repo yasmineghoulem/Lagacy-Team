@@ -118,6 +118,7 @@ module.exports.deletePost = (req, res) => {
 };
 
 module.exports.likePost = async (req, res) => {
+  console.log("server like post", req.body.id);
   if (!ObjectID.isValid(req.params.id))
     return res.status(400).send("Id unknown : " + req.params.id);
   try {
@@ -128,20 +129,21 @@ module.exports.likePost = async (req, res) => {
       },
       { new: true },
       (err, data) => {
+        if (!err) return res.json(data);
         if (err) return res.status(400).json(err);
       }
     );
-    await UserModel.findByIdAndUpdate(
-      req.body.id,
-      {
-        $addToSet: { stars: req.params.id }
-      },
-      { new: true },
-      (err, data) => {
-        if (!err) return res.json(data);
-        else return res.status(400).json(err);
-      }
-    );
+    // await UserModel.findByIdAndUpdate(
+    //   req.body.id,
+    //   {
+    //     $addToSet: { stars: req.params.id }
+    //   },
+    //   { new: true },
+    //   (err, data) => {
+    //     if (!err) return res.json(data);
+    //     else return res.status(400).json(err);
+    //   }
+    // );
   } catch (err) {
     return res.status(400).json(err);
   }
@@ -237,7 +239,7 @@ module.exports.deleteCommentPost = (req, res) => {
       {
         $pull: {
           comments: {
-            _id: req.params.id2 
+            _id: req.params.id2
           }
         }
       },

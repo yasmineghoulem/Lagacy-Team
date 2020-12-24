@@ -109,4 +109,12 @@ export class ProfileComponent implements OnInit {
     // base_URL returns localhost:3000 or the production URL
     return `http://localhost:3001/${fileName}`;
   }
+  deleteComment(postId: any, commentId: any) {
+    this.commentService.deleteComment(postId, commentId).subscribe(() => {
+      console.log('deleting');
+      // this.post.comments = this.post.comments.filter(comment => {
+      //   return comment._id != commentId
+      // })
+    });
+  }
 }

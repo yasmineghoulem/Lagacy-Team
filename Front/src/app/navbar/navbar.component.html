@@ -33,7 +33,11 @@
 
       <div class="user-account">
         <div class="user-info">
-          <img src="../../assets/images/resources/user.png" alt="" />
+          <img
+            style="width: 29px; height: 29px"
+            [src]="linkImg(user.picture)"
+            alt=""
+          />
           <a title="">{{ user.username }}</a>
           <i class="la la-sort-down"></i>
         </div>

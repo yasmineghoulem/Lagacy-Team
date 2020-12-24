@@ -16,7 +16,10 @@ export class FriendsComponent implements OnInit {
   ngOnInit(): void {
     console.log(this.invitations);
   }
-
+  linkImg(fileName: string) {
+    // base_URL returns localhost:3000 or the production URL
+    return `http://localhost:3001/${fileName}`;
+  }
   accept(friendId: String) {
     this.userService
       .acceptInvitation(this.user._id, friendId)

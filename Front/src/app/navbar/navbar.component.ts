@@ -17,7 +17,10 @@ export class NavbarComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {}
-
+  linkImg(fileName: string) {
+    // base_URL returns localhost:3000 or the production URL
+    return `http://localhost:3001/${fileName}`;
+  }
   Logout() {
     this.toastr.success('Logged out!', '', {
       timeOut: 4000,

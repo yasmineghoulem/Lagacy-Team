@@ -52,7 +52,8 @@
                         *ngFor="let friend of friendsOfFriends"
                       >
                         <img
-                          src="../../assets/images/resources/s1.png"
+                          style="width: 33px"
+                          [src]="linkImg(friend.picture)"
                           alt=""
                         />
                         <div class="sgt-text">
@@ -80,7 +81,7 @@
                   <div class="user-picy">
                     <img
                       class="circle-image"
-                      src="../../assets/images/resources/user-pic.png"
+                      [src]="linkImg(user.picture)"
                       alt=""
                     />
                   </div>
@@ -104,7 +105,8 @@
                       <div class="usy-dt">
                         <img
                           class="circle-image"
-                          src="../../assets/images/resources/us-pic.png"
+                          style="height: 50px; width: 50px"
+                          [src]="linkImg(post.posterId.picture)"
                           alt=""
                         />
                         <div class="usy-name">
@@ -223,7 +225,12 @@
                         <div class="post-comment">
                           <div class="cm_img">
                             <img
-                              src="../../assets/images/resources/bg-img4.png"
+                              style="
+                                border-radius: 100%;
+                                width: 45px;
+                                height: 45px;
+                              "
+                              [src]="linkImg(user.picture)"
                               alt=""
                             />
                           </div>

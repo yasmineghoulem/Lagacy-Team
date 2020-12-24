@@ -53,26 +53,20 @@ module.exports.updateUserPicture = (req, res) => {
   console.log("hey");
 };
 module.exports.updateUser = async (req, res) => {
-  if (!ObjectID.isValid(req.params.id))
-    return res.status(400).json("Id unknown : " + req.params.id);
-
+  console.log(req.body);
   try {
-    await UserModel.findOneAndUpdate(
+    await UserModel.findByIdAndUpdate(
+      req.body.userId,
       {
-        _id: req.params.id
-      },
-      {
-        $set: {
-          bio: req.body.bio
-        }
-      },
-      {
-        new: true,
-        upsert: true,
-        setDefaultsOnInsert: true
+        username: req.body.username,
+        bio: req.body.bio,
+        picture: req.file !== null ? "./upload/" + req.file.originalname : ""
       },
       (err, data) => {
-        if (!err) return res.json(data);
+        if (!err) {
+          console.log(data);
+          res.json(data);
+        }
         if (err) return res.status(500).json(err);
       }
     );

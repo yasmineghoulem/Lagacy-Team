@@ -22,7 +22,7 @@
                         <div class="post_topbar">
                           <div class="usy-dt">
                             <img
-                              style="height: 112px"
+                              style="height: 112px; width: 112px"
                               [src]="linkImg(user.picture)"
                               alt=""
                             />
@@ -69,7 +69,8 @@
                       <div class="post_topbar">
                         <div class="usy-dt">
                           <img
-                            src="../../assets/images/resources/us-pic.png"
+                            style="height: 45px; width: 45px"
+                            [src]="linkImg(user.picture)"
                             alt=""
                           />
                           <div class="usy-name">
@@ -152,7 +153,12 @@
                           <div class="post-comment">
                             <div class="cm_img">
                               <img
-                                src="../../assets/images/resources/bg-img4.png"
+                                style="
+                                  height: 41px;
+                                  width: 50px;
+                                  border-radius: 100%;
+                                "
+                                [src]="linkImg(user.picture)"
                                 alt=""
                               />
                             </div>

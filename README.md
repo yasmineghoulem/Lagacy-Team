@@ -20,3 +20,41 @@
   - [x] display message component: gets room by user1 (connected) + user2 (currentFriend) + loop over message array
   - [x] once user send message, socket.io('new-message') => add message to messages array of room ref.
   - [x] ngOnInit() recalls the room to refresh the messages.
+
+
+
+<div class="acc-setting">
+<h3>Account Setting</h3>
+<form>
+<div class="cp-field">
+ <h5>Old Password</h5>
+<div class="cpp-fiel">
+<input type="text" name="old-password" placeholder="Old Password">
+<i class="fa fa-lock"></i>
+</div>
+</div>
+<div class="cp-field">
+<h5>New Password</h5>
+<div class="cpp-fiel">
+<input type="text" name="new-password" placeholder="New Password">
+<i class="fa fa-lock"></i>
+</div>
+</div>
+<div class="cp-field">
+<h5>Repeat Password</h5>
+<div class="cpp-fiel">
+<input type="text" name="repeat-password" placeholder="Repeat Password">
+<i class="fa fa-lock"></i>
+</div>
+</div>
+<div class="cp-field">
+<h5><a href="#" title="">Forgot Password?</a></h5>
+</div>
+<div class="save-stngs pd2">
+<ul>
+<li><button type="submit">Save Setting</button></li>
+<li><button type="submit">Restore Setting</button></li>
+</ul>
+</div>
+</form>
+</div>
